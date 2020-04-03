@@ -33,7 +33,7 @@ $(document).ready(function () {
         // creates history link for this search
         if (history.indexOf(searchValue) === -1) {
           history.push(searchValue);
-          window.localStorage.setItem("history", JSON.stringify(history));
+          localStorage.setItem("history", JSON.stringify(history));
 
           makeRow(searchValue);
         }
@@ -146,13 +146,13 @@ $(document).ready(function () {
     });
   }
 
-  // retrieve current history, if data in local storage. create row for each previous search history
+  // retrieve current history, if data in local storage. create row for each previous search history. If nothing in local storage, create empty array. History.length - 1 will retrieve most recent search from local storage.
   var history = JSON.parse(window.localStorage.getItem("history")) || [];
 
   if (history.length > 0) {
     searchWeather(history[history.length - 1]);
   }
-
+// for each additional new search add additional row to "history" section that remains static on page when page refreshed
   for (var i = 0; i < history.length; i++) {
     makeRow(history[i]);
   }
