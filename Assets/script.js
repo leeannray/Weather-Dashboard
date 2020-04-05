@@ -29,7 +29,7 @@ $(document).ready(function () {
       type: "GET",
       url: `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial`,
       dataType: "json",
-      success: function(data) {
+      success: function (data) {
         // creates history link for this search
         if (history.indexOf(searchValue) === -1) {
           history.push(searchValue);
@@ -58,7 +58,9 @@ $(document).ready(function () {
         var cardBody = $("<div>").addClass("card-body");
         var img = $("<img>").attr(
           "src",
-          "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+          "https://api.openweathermap.org/img/w/" +
+            data.weather[0].icon +
+            ".png"
         );
 
         // merge and add to page
@@ -70,7 +72,7 @@ $(document).ready(function () {
         // call functions for api endpoints; need latitude and longitude coordinates (UV index)
         getForecast(searchValue);
         getUVIndex(data.coord.lat, data.coord.lon);
-      }
+      },
     });
   }
 
@@ -79,7 +81,7 @@ $(document).ready(function () {
       type: "GET",
       url: `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
       dataType: "json",
-      success: function(data) {
+      success: function (data) {
         // overwrite any existing content with title and empty row to append to page
         $("#forecast")
           .html('<h4 class="mt-3">5-DAY FORECAST</h4>')
@@ -100,11 +102,11 @@ $(document).ready(function () {
 
             var img = $("<img>").attr(
               "src",
-              "https://openweathermap.org/img/w/" +
+              "https://api.openweathermap.org/img/w/" +
                 data.list[i].weather[0].icon +
                 ".png"
             );
-// add p class for temp and humiditing to be displayed for current forecast in Farenheit and % humidity
+            // add p class for temp and humiditing to be displayed for current forecast in Farenheit and % humidity
             var p1 = $("<p>")
               .addClass("card-text")
               .text("Temp: " + data.list[i].main.temp_max + " °F");
@@ -117,7 +119,7 @@ $(document).ready(function () {
             $("#forecast .row").append(col);
           }
         }
-      }
+      },
     });
   }
 // get uv index for each city and add class for button with associated color depending on value
@@ -126,11 +128,9 @@ $(document).ready(function () {
       type: "GET",
       url: `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
       dataType: "json",
-      success: function(data) {
+      success: function (data) {
         var uv = $("<p>").text("UV Index: ");
-        var btn = $("<span>")
-          .addClass("btn btn-sm")
-          .text(data.value);
+        var btn = $("<span>").addClass("btn btn-sm").text(data.value);
 
         // change color depending on uv value (<3 green and <7 "warning" and >7 red)
         if (data.value < 3) {
@@ -142,7 +142,7 @@ $(document).ready(function () {
         }
 
         $("#currentForecast .card-body").append(uv.append(btn));
-      }
+      },
     });
   }
 
