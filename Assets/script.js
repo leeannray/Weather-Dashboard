@@ -27,7 +27,7 @@ $(document).ready(function () {
   function searchWeather(searchValue) {
     $.ajax({
       type: "GET",
-      url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial`,
+      url: `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=imperial`,
       dataType: "json",
       success: function(data) {
         // creates history link for this search
@@ -58,7 +58,7 @@ $(document).ready(function () {
         var cardBody = $("<div>").addClass("card-body");
         var img = $("<img>").attr(
           "src",
-          "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+          "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
         );
 
         // merge and add to page
@@ -77,7 +77,7 @@ $(document).ready(function () {
   function getForecast(searchValue) {
     $.ajax({
       type: "GET",
-      url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
+      url: `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${apiKey}&units=imperial`,
       dataType: "json",
       success: function(data) {
         // overwrite any existing content with title and empty row to append to page
@@ -100,7 +100,7 @@ $(document).ready(function () {
 
             var img = $("<img>").attr(
               "src",
-              "http://openweathermap.org/img/w/" +
+              "https://openweathermap.org/img/w/" +
                 data.list[i].weather[0].icon +
                 ".png"
             );
@@ -124,7 +124,7 @@ $(document).ready(function () {
   function getUVIndex(lat, lon) {
     $.ajax({
       type: "GET",
-      url: `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
+      url: `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
       dataType: "json",
       success: function(data) {
         var uv = $("<p>").text("UV Index: ");
