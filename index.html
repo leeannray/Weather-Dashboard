@@ -8,6 +8,21 @@
         integrity="sha384-bzjLLgZOhgXbSvSc5A9LWWo/mSIYf7U7nFbmYIB2Lgmuiw3vKGJuu+abKoaTx4W6" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Weather Dashboard</title>
+    <style>
+        #forecast {
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(10,10,54,1) 66%, rgba(0,212,255,1) 100%);
+            color: white;
+            padding: 30px 30px;
+        }
+        .navbar {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    background-image: url(https://macmaq.aqrc.ucdavis.edu/sites/g/files/dgvnsk6036/files/styles/sf_focus_box/public/images/focus_box/internet-amateur-meteorology.jpg?h=14d49951&itok=LBHQpS-C);
+        }
+        #currentForecast {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,10 +34,10 @@
     <div class="container-fluid">
         <div class="row">
             <aside class="col-lg-3 bg-light">
-                <h5 class="mt-1">Search by City:</h5>
+                <h5 class="mt-1">SEARCH BY CITY</h5>
                 <div class="form-inline form-group">
                     <input class="form-control" type="text" id="searchCity" />
-                    <button class="btn btn-primary" id="searchBtn"> <i class="fa fa-search"></i> </button>
+                    <button class="btn btn-secondary" id="searchBtn"> <i class="fa fa-search"></i> </button>
                 </div>
 
                 <ul class="list-group history"></ul>

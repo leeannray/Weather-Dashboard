@@ -12,14 +12,12 @@
     font-size: x-large;
     display: flexbox;
     text-justify: distribute;
-}
 
-#currentForecast {
-    background: rgb(2,0,36);
+*/
+/*
+#forecast {
+
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(10,10,54,1) 66%, rgba(0,212,255,1) 100%);
-    color: white;
-    padding: 20px, 20px;
-    margin: 20px, 20px;
-    display: flex;
-    text-justify: newspaper;
-} */
+
+}
+*/

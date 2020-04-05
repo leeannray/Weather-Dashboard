@@ -39,7 +39,7 @@ $(document).ready(function () {
         }
 
         // clear previous input so user can search again
-        $("#today").empty();
+        $("#currentForecast").empty();
 
         // create html for current weather/forecast. also add date. Use array to target data retrieved from api
         var title = $("<h3>")
@@ -82,7 +82,7 @@ $(document).ready(function () {
       success: function(data) {
         // overwrite any existing content with title and empty row to append to page
         $("#forecast")
-          .html('<h4 class="mt-3">5-Day Forecast:</h4>')
+          .html('<h4 class="mt-3">5-DAY FORECAST</h4>')
           .append('<div class="row">');
 
         // loop over all forecasts (by 3-hour increments)
@@ -91,7 +91,7 @@ $(document).ready(function () {
           if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
             // create html elements for a bootstrap card
             var col = $("<div>").addClass("col-md-2");
-            var card = $("<div>").addClass("card bg-primary text-white");
+            var card = $("<div>").addClass("card bg-secondary text-white");
             var body = $("<div>").addClass("card-body p-2");
 
             var title = $("<h5>")
@@ -141,7 +141,7 @@ $(document).ready(function () {
           btn.addClass("btn-danger");
         }
 
-        $("#today .card-body").append(uv.append(btn));
+        $("#currentForecast .card-body").append(uv.append(btn));
       }
     });
   }
